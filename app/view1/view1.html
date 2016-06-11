@@ -1,1 +1,11 @@
-<p>This is the partial for view 1.</p>
+<h1>Juju Favorite Twitch Channels</h1>
+
+<ul>
+	<li ng-repeat="stream in streams">
+		<img src="{{stream.logo}}">
+		<h3><a href="{{stream.channelUrl}}" target="_blank">{{stream.channelName}}</a></h3>
+		<h4>Status: {{stream.live}}</h4>
+		<p>{{stream.status}}</p>
+	</li>
+</ul>
+

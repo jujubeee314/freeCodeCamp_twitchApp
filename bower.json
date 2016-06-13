@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
-  "license": "MIT",
+  "name": "freeCodeCamp_twitchApp",
+  "description": "A twitchApp for freeCodeCamp",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jujubeee314",
+  "license": "JujuDev",
   "private": true,
   "dependencies": {
     "angular": "~1.5.0",
@@ -11,6 +11,7 @@
     "angular-loader": "~1.5.0",
     "angular-mocks": "~1.5.0",
     "html5-boilerplate": "^5.3.0",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-isotope": "^0.1.14"
   }
 }

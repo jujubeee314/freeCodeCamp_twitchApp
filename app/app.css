@@ -28,3 +28,23 @@
   content: "";
   padding: 0;
 }
+
+.twitchTile {
+  width: 280px;
+  height: 280px;
+  ackground-color: rgba(0, 0, 0, 0.2)
+}
+
+.twitchTile > h3 {
+  margin-top: 0px;
+}
+
+.twitchContainer > li {
+  display: inline-block;
+  margin: 0px;
+}
+
+ul {
+  list-style-type: none;
+}
+

@@ -1,11 +1,25 @@
+
+<div ng-init="twitchInit()">
+
 <h1>Juju Favorite Twitch Channels</h1>
 
 <ul>
-	<li ng-repeat="stream in streams">
-		<img src="{{stream.logo}}">
-		<h3><a href="{{stream.channelUrl}}" target="_blank">{{stream.channelName}}</a></h3>
-		<h4>Status: {{stream.live}}</h4>
-		<p>{{stream.status}}</p>
+	<li><a href="" ng-click="showOnly('')">Show All</a></li>
+	<li><a href="" ng-click="showOnly('Live')">Online</a></li>
+	<li><a href="" ng-click="showOnly('Offline')">Offline</a></li>
+</ul>
+
+<ul class="twitchContainer">
+	<li ng-repeat="stream in streams | filter:statusFilter" >
+		<a href="{{stream.channelUrl}}" target="_blank">
+			<div class="twitchTile" ng-style="{'background-image':'url('+stream.logo+')'}">
+				<h3>{{stream.channelName}}</h3>
+				<h4>Status: {{stream.live}}</h4>
+				<p>{{stream.status}}</p>
+			</div>
+		</a>
 	</li>
 </ul>
+
+</div>
 

@@ -15,10 +15,6 @@ angular.module('myApp.twitchController', ['ngRoute'])
 	var urlBase = "https://api.twitch.tv/kraken";
 	var cb = "?callback=JSON_CALLBACK";
 
-	twitchFactory.getStreams = function() {
-      return $http.jsonp(urlBase + "/streams" + cb);
-	};
-
 	twitchFactory.getChannel = function(name) {
 		return $http.jsonp(urlBase + "/channels/" + name + cb)
 			.then(function(resp) {
@@ -41,15 +37,8 @@ angular.module('myApp.twitchController', ['ngRoute'])
 	twitchFactory.getStatus = function(name) {
 		return $http.jsonp(urlBase + "/streams/" + name + cb)
 			.then(function(resp) {
-				var status = "";
-				if(resp.data.stream === null) {
-					status = "Offline";
-				} else if(resp.data.stream === undefined) {
-					status = "No Longer Available";
-				} else {
-					status = "Stream Live";
-				}
-				return status;
+				var status  = resp.data.stream;
+				return (status === null || undefined) ? "Offline" : "Live";
 			});
 	};
 
@@ -59,11 +48,15 @@ angular.module('myApp.twitchController', ['ngRoute'])
 
 .controller('twitchController', ['$scope', 'twitchFactory', function($scope, twitchFactory) {
 
-	var channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+	var channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "lifecoach1981"];
+
+	$scope.statusFilter = "";
+
+	$scope.showOnly = function(status) {
+		$scope.statusFilter = status;
+	};
 
 	$scope.streams = [];
-
-
 
 	var twitchInit = function() {
 
@@ -73,6 +66,8 @@ angular.module('myApp.twitchController', ['ngRoute'])
 					$scope.streams.push(resp);
 				});
 		});
+
+		
 	};
 
 	twitchInit();
